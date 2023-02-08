@@ -1,5 +1,10 @@
 pipeline {
-    agent { docker 'python:3.11' }
+    agent {
+        docker {
+            image 'python:3.11'
+            args '--privileged'
+        }
+    }
 
     options {
         buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '10'))
